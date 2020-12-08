@@ -19,6 +19,13 @@ h1 {
     margin-bottom: 50px;
     color: greenyellow;
 }
+#selectReadOut {
+    font-family: 'JetBrains Mono';
+    font-size: 4em;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: greenyellow;
+}
 #timeList {
     display: flex;
     justify-content: center;
