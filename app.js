@@ -32,7 +32,9 @@ setInterval(function(){
 setInterval(function(){
     let date = new Date();
     let offSetHour = date.getTimezoneOffset();
+    //timeZoneDifference = 1;
     offSetHour = offSetHour / 60;
+    //offSetHour = offSetHour + timeZoneDifference;
     let hour = date.getHours();
     hour = hour + offSetHour;
     let minute = date.getMinutes();
