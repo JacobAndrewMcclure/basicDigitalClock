@@ -44,7 +44,7 @@ setInterval(function(){
 
     if (timeZoneName == "GMT" || timeZoneName == "UTC") {
         timeHourDifference = 0;
-    } else if (timeZoneName == "ECT") {
+    } else if (timeZoneName == "CET") {
         timeHourDifference = 1;
     } else if (timeZoneName == "EET" || timeZoneName == "ART") {
         timeHourDifference = 2;        
@@ -71,8 +71,39 @@ setInterval(function(){
     } else if (timeZoneName == "ACT") {
         timeHourDifference = 9;
         timeMinuteDifference = 30;
+    } else if (timeZoneName == "AET") {
+        timeHourDifference = 10;
+    } else if (timeZoneName == "SST") {
+        timeHourDifference = 11;
+    } else if (timeZoneName == "NST") {
+        timeHourDifference = 12;
+    } else if (timeZoneName == "MIT") {
+        timeHourDifference = -11;
+    } else if (timeZoneName == "HST") {
+        timeHourDifference = -10;
+    } else if (timeZoneName == "AST") {
+        timeHourDifference = -9;
+    } else if (timeZoneName == "PST") {
+        timeHourDifference = -8;
+    } else if (timeZoneName == "PNT" || timeZoneName == "MST") {
+        timeHourDifference = -7;
+    } else if (timeZoneName == "CST") {
+        timeHourDifference = -6;
+    } else if (timeZoneName == "EST" || timeZoneName == "IET") {
+        timeHourDifference = -5;
+    } else if (timeZoneName == "PRT") {
+        timeHourDifference = -4;
+    } else if (timeZoneName == "CNT") {
+        timeHourDifference = -3;
+        timeMinuteDifference = -30;
+    } else if (timeZoneName == "AGT") {
+        timeHourDifference = -3;
+    } else if (timeZoneName == "BET") {
+        timeHourDifference = -3;
+    } else if (timeZoneName == "WAT") {
+        timeHourDifference = -1;
     } else {
-        console.log("Invalid time zone.");
+        
     }
 
     offSetHour = offSetHour + timeHourDifference;
@@ -83,23 +114,33 @@ setInterval(function(){
     minute = minute + offSetMinute;
     let second = date.getSeconds();
     let amOrPm = "AM"
-    //if hours over 24 subtracts 24
-    if (hour > 24) {
-        hour = hour - 24
-    } else {
-        
-    }
-    //calculates if minutes are over 60
-    if (minute > 60) {
+
+    //If hours are over 24 and/or minutes are over 60
+    if (hour > 24 && minute >= 60) {
+        hour = hour - 23;
         minute = minute - 60;
+    } else if (hour > 24 && minute < 0) {
+        hour = hour - 23;
+        minute = minute + 60;
+    }
+    else if (hour > 24) {
+        hour = hour - 24;
+    } else if (minute >= 60) {
+        minute = minute - 60;
+    } else if (minute < 0) {
+        hour = hour++
+        minute = minute + 60;
     } else {
-        
+
     }
     //calculates if it's am or pm
-    if (hour >= 12) {
-        amOrPm = "PM"
+    if (hour >= 24) {
+        amOrPm = "AM";
+    }
+    else if (hour >= 12) {
+        amOrPm = "PM";
     } else {
-        amOrPm = "AM"
+        amOrPm = "AM";
     }
     //If it's over 12 hours runs through first 12 again
     if (hour > 12) {
@@ -107,7 +148,6 @@ setInterval(function(){
     } else {
     
     }
-    
     //Display an addition zero if minute or second is single digit
     if (minute < 10 && second < 10) {
         document.getElementById("selectReadOut").innerHTML = hour + ":0" + minute + ":0" + second + " " + amOrPm;
