@@ -31,8 +31,38 @@ h1 {
     justify-content: center;
     margin-top: 40px;
 }
+#timeContainer2 {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-left: 25%;
+    margin-right: 25%;
+}
+#timeReadOut2 {
+    font-family: 'JetBrains Mono';
+    font-size: 4em;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: greenyellow;
+}
+#selectReadOut2 {
+    font-family: 'JetBrains Mono';
+    font-size: 4em;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: greenyellow;
+}
+#timeList2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
 @media (max-width: 750px) {
     #timeContainer {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    #timeContainer2 {
         margin-left: 10%;
         margin-right: 10%;
     }
